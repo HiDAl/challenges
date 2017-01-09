@@ -3,12 +3,8 @@ import re
 
 def load_words():
     """Load dictionary into a list and return list"""
-    words = []
-
     with open(DICTIONARY) as f:
-      words = f.read().splitlines()
-
-    return words
+      return f.read().splitlines()
 
 def calc_word_value(word):
     """Calculate the value of the word entered into function
@@ -24,8 +20,7 @@ def max_word_value(words = None):
     if words is None:
         words = load_words()
 
-    scores = map(calc_word_value, words)
-    return words[scores.index(max(scores))]
+    return max(words, key=calc_word_value)
 
 if __name__ == "__main__":
     pass # run unittests to validate
